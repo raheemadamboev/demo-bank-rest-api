@@ -5,7 +5,7 @@ import xyz.teamgravity.bankrestapi.gravity.datasource.BankDataSource
 import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 
 @Repository
-class MockBankDataSource: BankDataSource {
+class MockBankDataSource : BankDataSource {
 
     val banks = listOf(
         BankDto("abc", 0.1, 1.0),

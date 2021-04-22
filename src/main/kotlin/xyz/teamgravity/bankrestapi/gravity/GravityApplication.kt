@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class GravityApplication
 
 fun main(args: Array<String>) {
-	runApplication<GravityApplication>(*args)
+    runApplication<GravityApplication>(*args)
 }
