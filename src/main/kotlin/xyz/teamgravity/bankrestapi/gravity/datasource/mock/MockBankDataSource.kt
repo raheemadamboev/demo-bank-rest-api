@@ -14,4 +14,8 @@ class MockBankDataSource : BankDataSource {
     )
 
     override fun retrieveBanks(): Collection<BankDto> = banks
+
+    override fun retrieveBank(accountNumber: String) =
+        banks.firstOrNull() { it.accountNumber == accountNumber }
+            ?: throw NoSuchElementException("Could not found the bank with given account number")
 }

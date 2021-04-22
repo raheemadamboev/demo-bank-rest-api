@@ -8,4 +8,6 @@ import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 class BankService(private val dataSource: BankDataSource) {
 
     fun getBanks(): Collection<BankDto> = dataSource.retrieveBanks()
+
+    fun getBank(accountNumber: String) = dataSource.retrieveBank(accountNumber)
 }

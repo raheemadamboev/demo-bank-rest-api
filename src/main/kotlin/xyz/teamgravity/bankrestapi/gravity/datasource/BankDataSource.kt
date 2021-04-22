@@ -5,4 +5,6 @@ import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 interface BankDataSource {
 
     fun retrieveBanks(): Collection<BankDto>
+
+    fun retrieveBank(accountNumber: String): BankDto
 }
