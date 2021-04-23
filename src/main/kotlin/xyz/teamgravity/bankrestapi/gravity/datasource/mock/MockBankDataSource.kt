@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository
 import xyz.teamgravity.bankrestapi.gravity.datasource.BankDataSource
 import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 
-@Repository
+@Repository("mock")
 class MockBankDataSource : BankDataSource {
 
     val banks = mutableListOf(
