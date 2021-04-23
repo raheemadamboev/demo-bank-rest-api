@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*
 import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 import xyz.teamgravity.bankrestapi.gravity.service.BankService
 
+@Suppress("unused")
 @RestController
 @RequestMapping("api/banks")
 class BankController(private val bankService: BankService) {
@@ -30,4 +31,8 @@ class BankController(private val bankService: BankService) {
 
     @PatchMapping
     fun updateBank(@RequestBody bank: BankDto): BankDto = bankService.updateBank(bank)
+
+    @DeleteMapping("/{accountNumber}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteBank(@PathVariable accountNumber: String) = bankService.deleteBank(accountNumber)
 }
