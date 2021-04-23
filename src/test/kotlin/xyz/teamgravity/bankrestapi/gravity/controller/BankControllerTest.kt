@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.patch
 import org.springframework.test.web.servlet.post
 import xyz.teamgravity.bankrestapi.gravity.model.BankDto
 
@@ -125,6 +126,53 @@ internal class BankControllerTest @Autowired constructor(
                 print()
             }.andExpect {
                 status { isBadRequest() }
+            }
+        }
+    }
+
+    @Nested
+    @DisplayName("PATCH /api/banks")
+    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+    inner class PatchExistingBank {
+
+        @Test
+        fun `should update an existing bank`() {
+            // given
+            val updateBank = BankDto("Raheem", 10.0, 0.0)
+
+            // when/then
+            mockMvc.patch(baseUrl) {
+                contentType = MediaType.APPLICATION_JSON
+                content = objectMapper.writeValueAsString(updateBank)
+            }.andDo {
+                print()
+            }.andExpect {
+                status { isOk() }
+                content {
+                    contentType(MediaType.APPLICATION_JSON)
+                    json(objectMapper.writeValueAsString(updateBank))
+                }
+            }
+
+            mockMvc.get("$baseUrl/${updateBank.accountNumber}")
+                .andExpect {
+                    content { json(objectMapper.writeValueAsString(updateBank)) }
+                }
+        }
+
+        @Test
+        fun `should return BAD REQUEST if no bank with given account number`() {
+            // given
+            val invalidBank = BankDto("Raheema", 10.0, 0.0)
+
+            // when/then
+            mockMvc.patch(baseUrl) {
+                contentType = MediaType.APPLICATION_JSON
+                content = objectMapper.writeValueAsString(invalidBank)
+            }.andDo {
+                print()
+            }.andExpect {
+                status { isNotFound() }
             }
         }
     }
