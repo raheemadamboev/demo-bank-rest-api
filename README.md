@@ -1,6 +1,8 @@
 # demo-bank-rest-api
 Kotlin Spring Boot, REST API for demo banking project
 
+Simple REST API using Kotlin Spring Boot. I used JUnit5 for testing the project. Spring Boot has many amazing features.
+
 ## F.I.R.S.T. Principles for Automated Tests
 
 ✅ **Fast** -  fast feedback loop, run often
