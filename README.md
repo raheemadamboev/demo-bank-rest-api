@@ -1,5 +1,5 @@
 # demo-bank-rest-api
-Kotlin Spring Boot, REST API for demo banking project
+Kotlin Spring Boot, REST API for demo banking project 
 
 Simple REST API using Kotlin Spring Boot in TDD (Test Driven Development). I used JUnit5 for testing the project. Spring Boot has many amazing features.
 
